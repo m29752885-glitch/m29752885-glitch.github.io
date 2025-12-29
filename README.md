@@ -9,6 +9,7 @@ Ultimate REPL interaktif dengan sintaks **Bahasa Indonesia**. Semua command Pyth
 - Prompt interaktif:
   - `(+)>` → user
   - `[Root]>` → root
+  - `[ADMIN]>` Admin
 - **Bahasa Indonesia alias Python**:
   - `print` → `tulis`
   - `input` → `masukan`
@@ -42,6 +43,7 @@ Backup tersimpan di backup/ dengan timestamp
 Password admin default: rahasia123
 
 ## Contoh Kode
+password Admin : 12345
 
 ```Script
 tulis "Halo dunia!"

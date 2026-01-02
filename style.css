@@ -1,0 +1,89 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* Background */
+body {
+    background-color: #0d1117;
+    color: #c9d1d9;
+}
+
+/* Layout */
+.container {
+    max-width: 800px;
+    margin: 60px auto;
+    padding: 20px;
+}
+
+/* Title */
+h1 {
+    font-size: 3rem;
+    color: #58a6ff;
+    margin-bottom: 10px;
+}
+
+/* Tagline */
+.tagline {
+    font-size: 1.1rem;
+    color: #8b949e;
+    margin-bottom: 30px;
+}
+
+/* Card */
+.card {
+    background-color: #161b22;
+    border: 1px solid #30363d;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+/* Card title */
+.card h2 {
+    color: #58a6ff;
+    margin-bottom: 10px;
+}
+
+/* List */
+ul {
+    padding-left: 20px;
+}
+
+li {
+    margin-bottom: 8px;
+}
+
+/* Button */
+.btn {
+    display: inline-block;
+    padding: 10px 16px;
+    background-color: #238636;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: bold;
+}
+
+.btn:hover {
+    background-color: #2ea043;
+}
+
+/* Footer */
+footer {
+    margin-top: 40px;
+    text-align: center;
+    color: #8b949e;
+    font-size: 0.9rem;
+}
+
+/* Code */
+code {
+    background-color: #21262d;
+    padding: 2px 6px;
+    border-radius: 4px;
+    color: #79c0ff;
+}

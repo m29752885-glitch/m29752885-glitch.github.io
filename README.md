@@ -190,6 +190,11 @@ Alternatif Python untuk edukasi lokal
 Bisa dipakai di Termux / Linux / VPS
 
 
+# 🌐 Bergabung dengan Komunitas Bahasa-lo
+Gabung Discord resmi Bahasa-lo untuk diskusi, tanya jawaban, dan saran update:
+https://discord.gg/SVYD97qmre
+
+
 
 ---
 

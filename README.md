@@ -1,3 +1,8 @@
+# Bahasa-lo
+Bahasa pemrograman Indonesia berbasis Python untuk pemula.
+
+🌐 Website: https://m29752885-glitch.github.io/
+
 🚀 Bahasa-lo (.blo)
 
 Bahasa-lo adalah bahasa pemrograman berbasis Python dengan kata kunci Bahasa Indonesia, dirancang agar pemula langsung paham logika coding tanpa ribet bahasa Inggris.
@@ -28,8 +33,6 @@ Bahasa-lo adalah bahasa pemrograman berbasis Python dengan kata kunci Bahasa Ind
 🛡️ Permission Engine (user / root / admin)
 
 📦 Auto-manage folder downloads & plugins
-
-🌐 Website: https://m29752885-glitch.github.io/
 
 
 

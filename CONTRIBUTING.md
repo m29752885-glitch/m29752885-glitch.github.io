@@ -4,7 +4,7 @@ Terima kasih sudah mau berkontribusi ke **Bahasa-lo**! 🎉
 🌐 Bergabung dengan Komunitas Bahasa-lo
 Gabung Discord resmi Bahasa-lo untuk diskusi, tanya jawaban, dan saran update: https://discord.gg/SVYD97qmre
 
-🌐 Website: https://m29752885-glitch.github.io/
+🌐 Website: https://biasa132.github.io/
 
 Ikuti panduan ini supaya kontribusi kamu lancar.
 

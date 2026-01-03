@@ -1,68 +1,66 @@
 # info.py
-# Semua info sistem, plugin, command, panduan .blo
+# Informasi untuk AI Agent Adaptive Bahasa-lo (.blo)
+# Semakin detail, AI bisa menyusun jawaban lebih natural
 
 INFO = {
-    # ==========================
-    # REPL dasar Bahasa-lo
-    # ==========================
-    "tulis": "Menampilkan teks ke layar. Contoh: tulis 'Halo Dunia'",
-    "masukan": "Menerima input dari user. Contoh: nama = masukan 'Nama: '",
-    "jalankan": "Menjalankan file .blo. Contoh: jalankan test.blo",
-    "plugin -i": "Aktifkan satu plugin tertentu. Contoh: plugin -i Optimasi",
-    "plugin -l": "Menampilkan list semua plugin yang tersedia",
-    "plugin -c": "Control plugin lebih lanjut (backend, non-output)",
-    "CD": "Ganti direktori kerja saat ini. Contoh: CD downloads",
-    "ls": "Menampilkan daftar file/folder di direktori saat ini",
-    "hapus": "Hapus file atau folder. Contoh: hapus file.txt / hapus folder/",
-    "buat": "Membuat file/folder baru. Contoh: buat file.txt / buat folder/",
-    "clear": "Membersihkan layar REPL",
-    "bantuan": "Menampilkan menu bantuan Bahasa-lo",
-    "linux": "Masuk ke proot-distro (hanya root/admin). Pilih distro yang sudah di-install.",
-    "downloads": "Folder default untuk semua hasil download wget/curl/git",
-    "packages": "Folder tempat paket dari proot-distro tersimpan",
-    "agent": "Masuk ke Agent Adaptive Bahasa-lo (.blo), scan file baru, jalankan file, berikan tips",
-    
-    # ==========================
-    # Command Linux / Download
-    # ==========================
-    "wget": "Download file dari URL. Hasil masuk ./downloads",
-    "curl": "Download file dari URL. Hasil masuk ./downloads",
-    "git": "Clone repository git. Hasil masuk ./downloads",
-    "nano": "Editor teks di terminal (user friendly)",
+    # ======================
+    # Dasar Python (.blo)
+    # ======================
+    "tulis": "Gunakan 'tulis' untuk menampilkan teks. Contoh: tulis 'Halo Dunia'.",
+    "masukan": "Gunakan 'masukan' untuk meminta input pengguna. Contoh: nama = masukan 'Nama kamu: '",
+    "bulat": "Gunakan 'bulat' untuk mengubah nilai menjadi integer. Contoh: x = bulat('123')",
+    "pecahan": "Gunakan 'pecahan' untuk mengubah nilai menjadi float. Contoh: y = pecahan('3.14')",
+    "panjang": "Gunakan 'panjang' untuk menghitung panjang list atau string. Contoh: panjang([1,2,3])",
+    "daftar": "Gunakan 'daftar' untuk membuat list. Contoh: mylist = daftar([1,2,3])",
+    "kamus": "Gunakan 'kamus' untuk membuat dictionary. Contoh: mydict = kamus({'a':1})",
+    "Benar": "Gunakan 'Benar' untuk True.",
+    "Salah": "Gunakan 'Salah' untuk False.",
+    "Kosong": "Gunakan 'Kosong' untuk None.",
 
-    # ==========================
-    # Plugins
-    # ==========================
-    "Explorer_fix": "Plugin untuk memperbaiki bug navigasi file (CD, ls, path)",
-    "Optimasi": "Plugin untuk optimasi performa REPL dan auto reload plugin",
-    "crash_handle": "Plugin agar bug kecil tidak crash sistem",
-    "int_mod": "Plugin backend untuk kontrol sistem dan permission engine",
-    "manual_install_distro": "Plugin untuk install proot-distro secara manual",
+    # ======================
+    # Struktur Kontrol
+    # ======================
+    "jika": "Gunakan 'jika' untuk if statement. Contoh: jika x > 0:",
+    "apabila": "Gunakan 'apabila' untuk elif statement. Contoh: apabila x == 0:",
+    "lainnya": "Gunakan 'lainnya' untuk else. Contoh: lainnya:",
+    "untuk": "Gunakan 'untuk' untuk for loop. Contoh: untuk i dalam daftar([1,2,3]):",
+    "fungsi": "Gunakan 'fungsi' untuk membuat function. Contoh: fungsi salam():",
+    "kembalikan": "Gunakan 'kembalikan' untuk return. Contoh: kembalikan x + y",
+
+    # ======================
+    # REPL & File
+    # ======================
+    "jalankan": "Gunakan 'jalankan namafile.blo' untuk menjalankan file .blo dari REPL atau Agent.",
+    "scan": "Gunakan 'scan' untuk mengecek file .blo baru di folder downloads.",
+    "keluar": "Gunakan 'keluar' untuk keluar dari REPL atau Agent Adaptive.",
+    "buat": "Gunakan 'buat nama_file' untuk membuat file baru atau 'buat folder nama_folder' untuk membuat folder.",
+    "hapus": "Gunakan 'hapus nama_file' atau 'hapus folder nama_folder' untuk menghapus file/folder.",
+    "edit": "Gunakan 'edit nama_file' untuk mengedit file menggunakan nano.",
+
+    # ======================
+    # Plugin
+    # ======================
+    "plugin": "Gunakan 'plugin -i NamaPlugin' untuk mengaktifkan plugin, 'plugin -l' untuk daftar plugin.",
+    "auto_reload": "Beberapa plugin akan di-reload otomatis saat start REPL jika diaktifkan.",
     
-    # ==========================
-    # Panduan .blo (Python Bahasa Indonesia)
-    # ==========================
-    "tulis 'teks'": "Print di layar (tulis 'Halo')",
-    "masukan 'prompt'": "Input user (nama = masukan 'Nama: ')",
-    "bulat('123')": "Convert string ke integer",
-    "pecahan('3.14')": "Convert string ke float",
-    "panjang(daftar)": "Menghitung jumlah item di list atau string",
-    "daftar()": "Membuat list",
-    "kamus()": "Membuat dictionary",
-    "jika kondisi:": "If statement",
-    "apabila kondisi:": "Elif statement",
-    "lainnya:": "Else statement",
-    "untuk x in daftar:": "For loop",
-    "fungsi nama_fungsi():": "Mendefinisikan fungsi",
-    "kembalikan nilai": "Return dari fungsi",
-    "Benar": "Boolean True",
-    "Salah": "Boolean False",
-    "Kosong": "None / null",
+    # ======================
+    # Linux Command (Proot-distro)
+    # ======================
+    "apt": "Gunakan 'apt' atau command Linux lain di mode Linux untuk menginstall package di distro.",
+    "linux": "Gunakan 'linux' untuk masuk ke Proot-distro yang terinstall di Termux/VPS.",
+    "wget": "Gunakan 'wget URL' untuk download file dari internet. Semua hasil masuk ./downloads/",
+    "git": "Gunakan 'git clone URL' untuk clone repo. Semua hasil masuk ./downloads/",
+
+    # ======================
+    # AI / Agent
+    # ======================
+    "agent": "AI Adaptive Bahasa-lo bisa memberi tips, membaca file .blo baru, dan menjalankan kode.",
+    "adaptive": "AI akan menyesuaikan jawaban berdasarkan file .blo, plugin, command, dan info yang diketahui.",
+    "thinking": "Saat AI menampilkan 'thinking...', berarti sedang memproses input untuk menyusun jawaban.",
     
-    # ==========================
-    # Tips tambahan
-    # ==========================
-    "auto_reload_plugins": "Auto reload plugin tertentu. Hanya plugin yang aman",
-    "manual_plugin": "Aktifkan plugin satu per satu menggunakan plugin -i",
-    "permission_engine": "Kontrol akses user, root, admin",
+    # ======================
+    # Tips Pemula
+    # ======================
+    "error": "Jika muncul error, baca pesan error, cek syntax .blo, dan pastikan nama file benar.",
+    "debug": "Mode debug akan menampilkan langkah-langkah eksekusi Python/.blo dan Linux command."
 }

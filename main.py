@@ -19,8 +19,6 @@ from debug_tools import debug_log, cetak, DEBUG_MODE, cetak_error
 # contoh integrasi agent
 from agent_adaptive import AgentAdaptive
 
-agent = AgentAdaptive()
-# jalankan agent interaktif di REPL
 # ===============================
 # Globals
 # ===============================
@@ -145,8 +143,6 @@ def command_edit(args):
         print("❌ File tidak ditemukan")
 
 def eksekusi_perintah(baris, konteks, translate_fn=translate_blo):
-    ...
-    kode_python = translate_fn(baris)
     baris = baris.strip()
     if not baris:
         return
@@ -155,32 +151,39 @@ def eksekusi_perintah(baris, konteks, translate_fn=translate_blo):
     # 1. COBA PYTHON / .BLO
     # ==========================
     try:
-        kode_python = translate_blo(baris)
-        # debug hanya kalau mode debug aktif
+        kode_python = translate_fn(baris)
+
         if DEBUG_MODE:
             print(f"[DEBUG] Eksekusi sebagai Python: {kode_python}")
+
         exec(kode_python, konteks)
-        return
+        return True
+
     except Exception as e:
         if DEBUG_MODE:
             print(f"[DEBUG] Python gagal: {e}")
 
     # ==========================
-    # 2. COBA COMMAND LINUX
+    # 2. COBA COMMAND HOST (TERMUX)
     # ==========================
     try:
         if DEBUG_MODE:
             print(f"[DEBUG] Coba sebagai Linux command: {baris}")
+
         subprocess.run(baris, shell=True, check=True)
-        return
+        return True
+
     except Exception as e:
         if DEBUG_MODE:
             print(f"[DEBUG] Linux command gagal: {e}")
 
     # ==========================
-    # 3. ERROR FINAL
+    # 3. GAGAL TOTAL
     # ==========================
-    print("❌ Perintah tidak dikenali")
+    if DEBUG_MODE:
+        print("[DEBUG] Semua metode gagal")
+
+    return False
 
 DOWNLOAD_CMDS = ["wget", "curl", "git"]
 ALL_LINUX_CMDS = ["ls", "cd", "nano", "cat", "pwd"]  # dll
@@ -281,9 +284,21 @@ def repl():
                 jalankan_command_linux(baris)
                 continue
 
+            if baris.startswith("in "):
+                cmd = baris[3:]
+                eksekusi_perintah(cmd, konteks)
+                continue
+
             # bantuan
             if cmd in ["bantuan", "help"]:
                 menu_bantuan()
+
+            elif baris.strip() == "agent":
+                from agent_adaptive import AgentAdaptive
+                # Panggil agent
+                AgentAdaptive(debug=False)  
+                # debug=True kalau mau output debug
+                continue
 
             # plugin manual
             elif cmd == "plugin" and len(args) >= 1:

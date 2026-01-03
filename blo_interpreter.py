@@ -1,11 +1,33 @@
 # blo_interpreter.py
 # Interpreter Bahasa-lo (.blo)
-
+import sys
 import re
+import random
+import time
 # blo_interpreter.py
 from debug_tools import debug_log, cetak, DEBUG_MODE
 
 debug_log("Ini pesan debug")
+
+# ==========================
+# Lolcat print sederhana
+# ==========================
+def lolcat_print(teks, delay=0.005):
+    """
+    Mencetak teks dengan warna-warni ala lolcat.
+    delay = jeda per karakter
+    """
+    WARNA = [
+        "\033[91m", "\033[92m", "\033[93m", 
+        "\033[94m", "\033[95m", "\033[96m"
+    ]
+    RESET = "\033[0m"
+
+    for char in teks:
+        sys.stdout.write(random.choice(WARNA) + char + RESET)
+        sys.stdout.flush()
+        time.sleep(delay)
+    print()  # newline
 
 # ==========================
 # Kamus Bahasa Indonesia → Python
@@ -56,6 +78,9 @@ KAMUS = {
     r'\bBenar\b': 'True',
     r'\bSalah\b': 'False',
     r'\bKosong\b': 'None',
+    # Lolcat Sistem
+    r'\btulis\b': 'print',
+    r'\blolcat\s+tulis\b': 'lolcat_print',
 }
 
 # ==========================
@@ -77,9 +102,13 @@ def translate_blo(kode_blo: str) -> str:
 
     return kode_python
 
-def execute_blo(kode_blo: str, konteks=None):
+KONTEKS = {
+    "lolcat_print": lolcat_print
+}
+
+def execute_blo(kode_blo: str, KONTEKS=None):
     if konteks is None:
-        konteks = {}
+        KONTEKS = {}
 
     try:
         kode_py = translate_blo(kode_blo)
@@ -110,7 +139,7 @@ def jalankan_blo(path: str, debug=False):
         print("=======================")
 
     try:
-        exec(kode_python, KONTEKS_GLOBAL)
+        exec(kode_python, KONTEKS)
     except Exception as e:
         print("❌ Error saat menjalankan Bahasa-lo")
         print(f"👉 {e}")

@@ -18,6 +18,21 @@ from blo_interpreter import jalankan_blo, translate_blo
 from debug_tools import debug_log, cetak, DEBUG_MODE, cetak_error
 # contoh integrasi agent
 from agent_adaptive import AgentAdaptive
+from rich import print
+from rich.console import Console
+from rich.syntax import Syntax
+from update_notifier import check_update
+
+console = Console()
+
+def tampilkan_kode(kode):
+    # bikin syntax highlighting mirip Python tapi versi lo
+    syntax = Syntax(kode, "python", theme="monokai", line_numbers=False)
+    console.print(syntax)
+
+# contoh pemakaian
+kode = "def halo():\n    print('Halo Dunia')\nhalo()"
+tampilkan_kode(kode)
 
 # ===============================
 # Globals
@@ -258,6 +273,7 @@ KONTEKS = {
 }
 
 load_internal_modules(KONTEKS)
+check_update()
 
 def repl():
     auto_reload_all()

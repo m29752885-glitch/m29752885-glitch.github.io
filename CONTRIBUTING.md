@@ -14,7 +14,7 @@ Ikuti panduan ini supaya kontribusi kamu lancar.
 
 1. Fork repo ini  
 2. Clone ke lokal / VPS:  
-   git clone https://github.com/m29752885-glitch/Bahasa-lo.git  
+   git clone https://github.com/biasa132/buasa132.github.io
 3. Masuk folder repo:  
    cd Bahasa-lo  
 4. Buat branch baru untuk fitur / bug fix:  

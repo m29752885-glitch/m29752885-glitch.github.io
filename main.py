@@ -1,5 +1,6 @@
 # main.py - Versi FINAL Bahasa-lo
 import os
+import requests
 import sys
 import subprocess
 from config.pkg_config import (
@@ -33,6 +34,17 @@ def tampilkan_kode(kode):
 # contoh pemakaian
 kode = "def halo():\n    print('Halo Dunia')\nhalo()"
 tampilkan_kode(kode)
+
+
+GITHUB_RAW_VERSION = "https://raw.githubusercontent.com/biasa132/biasa132.github.io/main/version.txt"
+LOCAL_VERSION_FILE = "./version.txt"
+GITHUB_CHANGELOG = "https://raw.githubusercontent.com/biasa132/biasa132.github.io/main/CHANGELOG.txt"
+
+STATUS_EMOJI = {
+    "stable": "✅",
+    "beta": "⚠️",
+    "alpha": "🔴"
+}
 
 # ===============================
 # Globals
@@ -91,6 +103,72 @@ def masuk_linux():
         os.system(f"proot-distro login {distro} --shared-tmp")
     except Exception as e:
         print("❌ Error saat masuk Linux:", e)
+
+# =========================
+# FUNGSI BANTU
+# =========================
+def get_local_version():
+    if os.path.exists(LOCAL_VERSION_FILE):
+        with open(LOCAL_VERSION_FILE, "r") as f:
+            return f.read().strip()
+    return None
+
+def set_local_version(version):
+    with open(LOCAL_VERSION_FILE, "w") as f:
+        f.write(version)
+
+def get_remote_version():
+    try:
+        r = requests.get(GITHUB_RAW_VERSION, timeout=5)
+        if r.status_code == 200:
+            return r.text.strip()
+    except:
+        pass
+    return None
+
+def get_changelog():
+    try:
+        r = requests.get(GITHUB_CHANGELOG, timeout=5)
+        if r.status_code == 200:
+            return r.text
+    except:
+        pass
+    return "Changelog tidak tersedia."
+
+def detect_status(version):
+    # Contoh: "v3.0-stable" -> stable
+    if "stable" in version.lower():
+        return "stable"
+    elif "beta" in version.lower():
+        return "beta"
+    elif "alpha" in version.lower():
+        return "alpha"
+    return "stable"
+
+# =========================
+# CEK UPDATE
+# =========================
+def check_update():
+    local = get_local_version()
+    remote = get_remote_version()
+
+    if remote is None:
+        print("⚠️ Gagal cek versi terbaru.")
+        return
+
+    if local != remote:
+        status = detect_status(remote)
+        emoji = STATUS_EMOJI.get(status, "✅")
+        print(f"\n{emoji} **UPDATE BARU DIRILIS!**")
+        print(f"📦 Versi terbaru: {remote} ({status.upper()})")
+        print("\n📝 Changelog:")
+        print(get_changelog())
+        print("\n✅ Update selesai.\n")
+
+        # Simpan versi baru
+        set_local_version(remote)
+    else:
+        print("🟢 Bahasa-lo sudah versi terbaru.")
 
 # ===============================
 # Fungsi File Explorer
@@ -393,4 +471,4 @@ def repl():
 # ===============================
 if __name__ == "__main__":
     repl()
-  
+    check_update()

@@ -3,9 +3,6 @@
 # Sistem file & OS interaction
 os-sys
 
-# Eksekusi command shell
-subprocess
-
 # Regex & parsing
 re
 
@@ -18,5 +15,5 @@ pickle
 # HTTP requests (jika perlu download plugin atau rootfs)
 requests
 
-# Terminal colors / tampilan opsional
-colorama
+# untuk lolcat .blo
+rich
